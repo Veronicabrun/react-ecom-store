@@ -1,0 +1,46 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  backdrop-filter: saturate(180%) blur(6px);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 1rem;
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding: 0.75rem 1rem;
+
+  @media (min-width: 768px) {
+    padding: 1rem 1.25rem;
+  }
+}
+
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .4rem;
+  text-decoration: none;
+  margin-left: .25rem; /* litt avstand fra venstre kant */
+}
+
+.brandLeft,
+.brandRight {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  line-height: 1;
+}
+
+.brandLeft { color: #0c0d07; }
+.brandRight { color: #d96b52; }
+
+.dot {
+  transform: translateY(-1px);
+  font-weight: 900;
+  color: #d96b52;
+}

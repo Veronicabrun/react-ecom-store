@@ -1,0 +1,24 @@
+.nav { justify-self: center; }
+
+.list {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #0c0d07;
+  font-weight: 500;
+  padding: .35rem .5rem;
+  border-radius: .5rem;
+}
+
+.link:hover { background: rgba(0,0,0,.04); }
+
+.active {
+  color: #d96b52;
+  background: rgba(217,107,82,.12);
+}

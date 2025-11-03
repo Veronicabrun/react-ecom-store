@@ -1,0 +1,11 @@
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.main {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding: 1.25rem;
+}
