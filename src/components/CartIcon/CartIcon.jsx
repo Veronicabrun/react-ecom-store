@@ -1,13 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CartIcon.module.scss";
-
 import { useCart } from "../../context/CartContext";
 
-
 export default function CartIcon() {
-  // TODO: Bytt ut hardkodet 0 med cart-context senere
-  const count = 0;
+  const { cartCount } = useCart();        // ⬅️ henter antall varer
   const navigate = useNavigate();
 
   return (
@@ -27,7 +24,9 @@ export default function CartIcon() {
       >
         <path d="M6 6h15l-1.5 9h-12L5 3H2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
-      <span className={styles.badge} aria-live="polite">{count}</span>
+
+      <span className={styles.badge} aria-live="polite">{cartCount}</span>
     </button>
   );
 }
+
