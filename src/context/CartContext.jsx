@@ -1,39 +1,65 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-// 1️⃣ Opprett Context
 const CartContext = createContext();
 
-// 2️⃣ Opprett en "Provider"-komponent
 export const CartProvider = ({ children }) => {
+  // Hver vare: { id, title, price, imageUrl, qty }
   const [cartItems, setCartItems] = useState([]);
 
-  // Legg til et produkt i handlekurven
-  const addToCart = (product) => {
-    setCartItems((prevItems) => [...prevItems, product]);
+  // Legg til produkt (slår sammen på id og øker qty)
+  const addToCart = (product, qty = 1) => {
+    setCartItems((prev) => {
+      const idx = prev.findIndex((p) => p.id === product.id);
+      if (idx !== -1) {
+        const copy = [...prev];
+        copy[idx] = { ...copy[idx], qty: copy[idx].qty + qty };
+        return copy;
+      }
+      return [...prev, { ...product, qty }];
+    });
   };
 
-  // Fjern et produkt fra handlekurven
+  const increase = (id) => {
+    setCartItems((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, qty: p.qty + 1 } : p))
+    );
+  };
+
+  const decrease = (id) => {
+    setCartItems((prev) =>
+      prev
+        .map((p) => (p.id === id ? { ...p, qty: p.qty - 1 } : p))
+        .filter((p) => p.qty > 0)
+    );
+  };
+
   const removeFromCart = (id) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    setCartItems((prev) => prev.filter((p) => p.id !== id));
   };
 
-  // Tøm handlekurven
-  const clearCart = () => {
-    setCartItems([]);
-  };
+  const clearCart = () => setCartItems([]);
 
-  // Totalt antall varer i handlekurven
-  const cartCount = cartItems.length;
+  // Badge-tall = sum av qty
+  const cartCount = cartItems.reduce((sum, p) => sum + p.qty, 0);
+  // Total (nyttig i oppsummering)
+  const cartTotal = cartItems.reduce((sum, p) => sum + p.price * p.qty, 0);
 
-  // Returner "Provider" slik at alle barn får tilgang
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart, cartCount }}
+      value={{
+        cartItems,
+        addToCart,
+        increase,
+        decrease,
+        removeFromCart,
+        clearCart,
+        cartCount,
+        cartTotal,
+      }}
     >
       {children}
     </CartContext.Provider>
   );
 };
 
-// 3️⃣ En liten "custom hook" for enklere bruk i komponenter
 export const useCart = () => useContext(CartContext);

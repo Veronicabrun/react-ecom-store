@@ -1,0 +1,148 @@
+.page {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.h1 { margin-bottom: 1.25rem; }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Radlayout (desktop): img | info | qty | line | remove */
+.item {
+  display: grid;
+  grid-template-columns: 84px 1fr auto auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: .9rem 1rem;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: .75rem;
+  background: #fff;
+}
+
+.thumb {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: .5rem;
+  display: block;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  min-width: 0; /* for ellipsis */
+}
+.title {
+  font-weight: 700;
+  color: #0c0d07;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.unitPrice {
+  color: #777;
+  font-size: .9rem;
+}
+
+.qtyControls {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.qtyBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: .4rem;
+  border: 1px solid rgba(0,0,0,.15);
+  background: #fff;
+  line-height: 1;
+  cursor: pointer;
+}
+.qtyValue { min-width: 1.5rem; text-align: center; }
+
+.line {
+  font-weight: 700;
+  color: #0c0d07;
+  white-space: nowrap;
+}
+
+.remove {
+  color: #d96b52;
+  background: transparent;
+  border: 0;
+  padding: .25rem .4rem;
+  justify-self: end;
+  cursor: pointer;
+}
+
+/* Oppsummering nederst */
+.summary {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: .75rem 1rem;
+  margin-top: 1.25rem;
+}
+.clear {
+  justify-self: start;
+  background: transparent;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .5rem;
+  padding: .5rem .8rem;
+  cursor: pointer;
+}
+.total { justify-self: end; font-size: 1.05rem; }
+.checkout {
+  background: #0c0d07;
+  color: #fff;
+  padding: .6rem 1.2rem;
+  border-radius: .5rem;
+  border: none;
+  cursor: pointer;
+}
+.checkout:hover { background: #222; }
+
+.empty {
+  text-align: center;
+  margin: 4rem 0;
+}
+.back {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #0c0d07;
+  font-weight: 600;
+}
+
+/* Mobil: stable pent under hverandre */
+@media (max-width: 640px) {
+  .item {
+    grid-template-columns: 84px 1fr;
+    grid-template-areas:
+      "img info"
+      "qty line"
+      ".   remove";
+    align-items: start;
+    gap: .75rem 1rem;
+  }
+  .thumb { grid-area: img; }
+  .info  { grid-area: info; }
+  .qtyControls { grid-area: qty; }
+  .line { grid-area: line; justify-self: end; }
+  .remove { grid-area: remove; justify-self: end; }
+
+  .summary {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "clear clear"
+      "total checkout";
+  }
+  .clear   { grid-area: clear; justify-self: start; }
+  .total   { grid-area: total; }
+  .checkout{ grid-area: checkout; }
+}

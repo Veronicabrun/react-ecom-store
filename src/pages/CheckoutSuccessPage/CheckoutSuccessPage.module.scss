@@ -1,0 +1,21 @@
+/* src/pages/CheckoutSuccessPage/CheckoutSuccessPage.module.scss */
+.section {
+  position: relative;     /* ingen overlay */
+  z-index: 1;             /* under header (som har høyere z-index) */
+  padding: 2rem 1.25rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  text-align: center;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: .75rem;
+}
+
+.title { font-size: 2rem; margin-bottom: .5rem; }
+
+.back {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: underline;
+  font-weight: 600;
+}
