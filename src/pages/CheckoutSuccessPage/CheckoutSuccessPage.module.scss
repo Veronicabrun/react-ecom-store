@@ -1,21 +1,58 @@
-/* src/pages/CheckoutSuccessPage/CheckoutSuccessPage.module.scss */
 .section {
-  position: relative;     /* ingen overlay */
-  z-index: 1;             /* under header (som har høyere z-index) */
+  position: relative;
+  z-index: 1;
   padding: 2rem 1.25rem;
-  max-width: 700px;
+  max-width: 720px;
   margin: 2rem auto;
   text-align: center;
   background: #fff;
-  border: 1px solid rgba(0,0,0,.08);
+  border: 1px solid rgba(0, 0, 0, .08);
   border-radius: .75rem;
 }
 
-.title { font-size: 2rem; margin-bottom: .5rem; }
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 0.75rem;
+  border-radius: 999px;
+  background: #f0fdf4; /* lys grønn bak sirkel/hake */
+}
 
-.back {
-  display: inline-block;
-  margin-top: 1rem;
-  text-decoration: underline;
-  font-weight: 600;
+.icon {
+  display: block;
+}
+
+.title {
+  font-size: 1.75rem;
+  margin: 0.25rem 0 0.25rem;
+  color: #0c0d07;
+}
+
+.lead {
+  margin: 0 0 1rem;
+  color: #333;
+}
+
+.actions {
+  margin-top: .5rem;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .6rem 1.1rem;
+  border-radius: .5rem;
+  background: #0c0d07;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border: 0;
+}
+
+.ctaBtn:hover {
+  background: #222;
 }

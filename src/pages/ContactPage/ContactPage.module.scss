@@ -1,0 +1,76 @@
+.section {
+  width: min(900px, 100%);
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.h1 { margin: 0 0 1rem; }
+
+.form {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 12px;
+  padding: 1rem;
+  /* sikrer at innhold ikke stikker utenfor pga padding */
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .form { padding: 1.25rem; }
+}
+
+.field {
+  margin-bottom: .8rem; /* TETTER AVSTANDEN mellom feltene */
+}
+
+label {
+  display: block;
+  margin-bottom: .35rem;
+  font-size: .92rem;
+  color: #0c0d07;
+}
+
+.control {
+  display: block;
+  width: 100%;
+  box-sizing: border-box; /* hindrer overflow */
+  padding: .55rem .7rem;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .5rem;
+  background: #fff;
+}
+
+.textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.error {
+  margin-top: .35rem;
+  color: #d96b52;
+  font-size: .85rem;
+}
+
+.help {
+  margin-top: .25rem;
+  color: #666;
+  font-size: .9rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: .9rem;
+}
+
+.submit {
+  background: #0c0d07;
+  color: #fff;
+  padding: .55rem 1rem;
+  border: 0;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+.submit:hover { background: #222; }
+
+

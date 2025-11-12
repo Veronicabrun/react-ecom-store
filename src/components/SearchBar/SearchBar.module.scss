@@ -1,0 +1,39 @@
+.wrap { position: relative; margin: 0 0 1rem; }
+.input {
+  width: 100%;
+  padding: .65rem .8rem;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .6rem;
+  font: inherit;
+}
+.list {
+  position: absolute;
+  inset-inline: 0;
+  margin: .4rem 0 0;
+  padding: .4rem;
+  list-style: none;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: .6rem;
+  max-height: 320px;
+  overflow: auto;
+  z-index: 40;
+}
+.item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: .6rem;
+  width: 100%;
+  text-align: left;
+  padding: .45rem;
+  border-radius: .5rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+
+  img {
+    width: 40px; height: 40px; object-fit: cover; border-radius: .35rem;
+  }
+}
+.item:hover { background: rgba(0,0,0,.04); }
+.empty { margin-top: .4rem; font-size: .9rem; color: #666; }

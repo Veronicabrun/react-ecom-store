@@ -9,7 +9,6 @@ export default function CartPage() {
     increase,
     decrease,
     removeFromCart,
-    clearCart,
     cartTotal,
   } = useCart();
 
@@ -72,18 +71,31 @@ export default function CartPage() {
             <button
               className={styles.remove}
               onClick={() => removeFromCart(item.id)}
+              aria-label={`Remove ${item.title} from cart`}
+              title="Remove item"
             >
-              Remove
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v7M14 11v7"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
           </li>
         ))}
       </ul>
 
       <div className={styles.summary}>
-        <button className={styles.clear} onClick={clearCart}>
-          Clear cart
-        </button>
-
         <div className={styles.total}>
           Total: <strong>{cartTotal.toFixed(2)} kr</strong>
         </div>
