@@ -1,6 +1,6 @@
 // src/pages/HomePage/HomePage.jsx
 import React, { useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import styles from "./HomePage.module.scss";
@@ -38,8 +38,26 @@ export default function HomePage() {
     <section className={styles.section}>
       <h1 className={styles.heading}>Products</h1>
 
-      {/* Look-ahead søk */}
+      {/* Look-ahead søk med ikon */}
       <div className={styles.searchWrap}>
+        {/* Ikon – ren dekorasjon */}
+        <svg
+          className={styles.searchIcon}
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M21 21l-4.2-4.2M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+
         <input
           type="search"
           className={styles.searchInput}
@@ -51,6 +69,7 @@ export default function HomePage() {
           aria-expanded={suggestions.length > 0}
           aria-controls="suggestions"
         />
+
         {query && suggestions.length > 0 && (
           <ul id="suggestions" className={styles.suggestList} role="listbox">
             {suggestions.map((s) => (
@@ -66,6 +85,7 @@ export default function HomePage() {
             ))}
           </ul>
         )}
+
         {query && suggestions.length === 0 && (
           <div className={styles.noSuggest}>No matches</div>
         )}

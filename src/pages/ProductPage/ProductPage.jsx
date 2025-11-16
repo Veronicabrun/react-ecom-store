@@ -1,3 +1,4 @@
+// src/pages/ProductPage/ProductPage.jsx
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./ProductPage.module.scss";
@@ -40,8 +41,7 @@ export default function ProductPage() {
   }, [id]);
 
   if (loading) return <div className={styles.state}>Loading product…</div>;
-  if (error || !data)
-    return <div className={styles.state}>Could not load product.</div>;
+  if (error || !data) return <div className={styles.state}>Could not load product.</div>;
 
   const {
     id: pid,
@@ -54,9 +54,7 @@ export default function ProductPage() {
   } = data;
 
   const hasDiscount = discountedPrice < price;
-  const discountPct = hasDiscount
-    ? Math.round(((price - discountedPrice) / price) * 100)
-    : 0;
+  const discountPct = hasDiscount ? Math.round(((price - discountedPrice) / price) * 100) : 0;
 
   function handleAdd() {
     addToCart({
@@ -67,7 +65,7 @@ export default function ProductPage() {
       qty: 1,
     });
 
-    // Vis toast-melding
+    // Vis toast-melding i 2.5s
     setShowToast(true);
     setTimeout(() => setShowToast(false), 2500);
   }
@@ -78,24 +76,38 @@ export default function ProductPage() {
 
   return (
     <div className={styles.page}>
-      {/* ✅ Toast med moderne handlekurv-ikon */}
+      {/* Toast øverst til høyre – bruker samme shopping bag-ikon som CartIcon.jsx */}
       {showToast && (
-        <div className={styles.toast}>
-          <div className={styles.toastIcon}>
+        <div className={styles.toast} role="status" aria-live="polite">
+          <div className={styles.toastIcon} aria-hidden="true">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              className={styles.icon}
               width="22"
               height="22"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
               viewBox="0 0 24 24"
+              fill="none"
             >
-              <circle cx="9" cy="21" r="1" />
-              <circle cx="20" cy="21" r="1" />
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              {/* Posekropp */}
+              <path
+                d="M5 8.5h14l-1.2 11a2 2 0 0 1-2 1.5H8.2a2 2 0 0 1-2-1.5L5 8.5Z"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+              {/* Håndtak */}
+              <path
+                d="M8.5 8.5V7.6a3.5 3.5 0 0 1 7 0v0.9"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+              {/* Nagler */}
+              <circle cx="9" cy="10.2" r="0.7" fill="currentColor" />
+              <circle cx="15" cy="10.2" r="0.7" fill="currentColor" />
             </svg>
           </div>
           <div className={styles.toastText}>
@@ -108,9 +120,7 @@ export default function ProductPage() {
       <div className={styles.wrap}>
         <div className={styles.media}>
           <img src={src} alt={alt} />
-          {hasDiscount && (
-            <span className={styles.badge}>-{discountPct}%</span>
-          )}
+          {hasDiscount && <span className={styles.badge}>-{discountPct}%</span>}
         </div>
 
         <div className={styles.info}>
@@ -118,16 +128,12 @@ export default function ProductPage() {
 
           <div className={styles.prices}>
             <span className={styles.now}>{discountedPrice.toFixed(2)} kr</span>
-            {hasDiscount && (
-              <span className={styles.before}>{price.toFixed(2)} kr</span>
-            )}
+            {hasDiscount && <span className={styles.before}>{price.toFixed(2)} kr</span>}
           </div>
 
           <p className={styles.desc}>{description}</p>
 
-          <button className={styles.btn} onClick={handleAdd}>
-            Add to cart
-          </button>
+          <button className={styles.btn} onClick={handleAdd}>Add to cart</button>
         </div>
       </div>
 

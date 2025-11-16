@@ -1,62 +1,48 @@
-import React, { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// src/components/SearchBar/SearchBar.jsx
+import React from "react";
 import styles from "./SearchBar.module.scss";
 
-export default function SearchBar({ products = [] }) {
-  const [query, setQuery] = useState("");
-  const navigate = useNavigate();
-
-  const results = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return [];
-    return products
-      .filter(p => p.title?.toLowerCase().includes(q))
-      .slice(0, 8); // begrens treff
-  }, [products, query]);
-
-  function onSubmit(e) {
-    e.preventDefault();
-    if (results.length > 0) {
-      navigate(`/product/${results[0].id}`);
-    }
-  }
-
+export default function SearchBar({ value, onChange, placeholder = "Search products…" }) {
   return (
     <div className={styles.wrap}>
-      <form onSubmit={onSubmit} role="search" aria-label="Product search">
-        <input
-          className={styles.input}
-          type="search"
-          placeholder="Search products…"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          aria-autocomplete="list"
-          aria-controls="search-suggestions"
+      {/* Dekorativt ikon */}
+      <svg
+        className={styles.icon}
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M11 19a8 8 0 1 1 5.293-13.707A8 8 0 0 1 11 19zm9.5 2-4.35-4.35"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
-      </form>
+      </svg>
 
-      {query && results.length > 0 && (
-        <ul id="search-suggestions" className={styles.list} role="listbox">
-          {results.map(item => (
-            <li key={item.id}>
-              <button
-                type="button"
-                className={styles.item}
-                onClick={() => navigate(`/product/${item.id}`)}
-              >
-                <img
-                  src={item.image?.url || "https://via.placeholder.com/60x60?text=No+Img"}
-                  alt={item.image?.alt || item.title}
-                />
-                <span>{item.title}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+      <input
+        type="search"
+        className={styles.input}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        aria-label="Search products"
+      />
 
-      {query && results.length === 0 && (
-        <div className={styles.empty}>No matches</div>
+      {value && (
+        <button
+          type="button"
+          className={styles.clear}
+          onClick={() => onChange("")}
+          aria-label="Clear search"
+          title="Clear"
+        >
+          ×
+        </button>
       )}
     </div>
   );

@@ -1,39 +1,49 @@
-.wrap { position: relative; margin: 0 0 1rem; }
+.wrap {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+
+.icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+  pointer-events: none; // klikker går til input
+}
+
 .input {
   width: 100%;
-  padding: .65rem .8rem;
+  box-sizing: border-box;
+  padding: 0.6rem 2.5rem 0.6rem 2.25rem; // plass til ikon til venstre + clear til høyre
   border: 1px solid rgba(0,0,0,.15);
-  border-radius: .6rem;
-  font: inherit;
-}
-.list {
-  position: absolute;
-  inset-inline: 0;
-  margin: .4rem 0 0;
-  padding: .4rem;
-  list-style: none;
+  border-radius: 10px;
   background: #fff;
-  border: 1px solid rgba(0,0,0,.12);
-  border-radius: .6rem;
-  max-height: 320px;
-  overflow: auto;
-  z-index: 40;
-}
-.item {
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: .6rem;
-  width: 100%;
-  text-align: left;
-  padding: .45rem;
-  border-radius: .5rem;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
+  color: #0c0d07;
 
-  img {
-    width: 40px; height: 40px; object-fit: cover; border-radius: .35rem;
+  &:focus {
+    outline: none;
+    border-color: #d96b52;
+    box-shadow: 0 0 0 3px rgba(217,107,82,.15);
   }
 }
-.item:hover { background: rgba(0,0,0,.04); }
-.empty { margin-top: .4rem; font-size: .9rem; color: #666; }
+
+.clear {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: #777;
+  font-size: 18px;
+  line-height: 1;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover { background: rgba(0,0,0,.06); }
+}
+
