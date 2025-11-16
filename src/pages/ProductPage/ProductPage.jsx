@@ -12,6 +12,7 @@ export default function ProductPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -39,7 +40,8 @@ export default function ProductPage() {
   }, [id]);
 
   if (loading) return <div className={styles.state}>Loading product…</div>;
-  if (error || !data) return <div className={styles.state}>Could not load product.</div>;
+  if (error || !data)
+    return <div className={styles.state}>Could not load product.</div>;
 
   const {
     id: pid,
@@ -52,7 +54,9 @@ export default function ProductPage() {
   } = data;
 
   const hasDiscount = discountedPrice < price;
-  const discountPct = hasDiscount ? Math.round(((price - discountedPrice) / price) * 100) : 0;
+  const discountPct = hasDiscount
+    ? Math.round(((price - discountedPrice) / price) * 100)
+    : 0;
 
   function handleAdd() {
     addToCart({
@@ -62,6 +66,10 @@ export default function ProductPage() {
       imageUrl: image?.url || null,
       qty: 1,
     });
+
+    // Vis toast-melding
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2500);
   }
 
   const fallbackImg = "https://via.placeholder.com/600x400?text=No+Image";
@@ -70,10 +78,39 @@ export default function ProductPage() {
 
   return (
     <div className={styles.page}>
+      {/* ✅ Toast med moderne handlekurv-ikon */}
+      {showToast && (
+        <div className={styles.toast}>
+          <div className={styles.toastIcon}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+          </div>
+          <div className={styles.toastText}>
+            <strong>Added to cart</strong>
+            <span>Item successfully added</span>
+          </div>
+        </div>
+      )}
+
       <div className={styles.wrap}>
         <div className={styles.media}>
           <img src={src} alt={alt} />
-          {hasDiscount && <span className={styles.badge}>-{discountPct}%</span>}
+          {hasDiscount && (
+            <span className={styles.badge}>-{discountPct}%</span>
+          )}
         </div>
 
         <div className={styles.info}>
@@ -81,12 +118,16 @@ export default function ProductPage() {
 
           <div className={styles.prices}>
             <span className={styles.now}>{discountedPrice.toFixed(2)} kr</span>
-            {hasDiscount && <span className={styles.before}>{price.toFixed(2)} kr</span>}
+            {hasDiscount && (
+              <span className={styles.before}>{price.toFixed(2)} kr</span>
+            )}
           </div>
 
           <p className={styles.desc}>{description}</p>
 
-          <button className={styles.btn} onClick={handleAdd}>Add to cart</button>
+          <button className={styles.btn} onClick={handleAdd}>
+            Add to cart
+          </button>
         </div>
       </div>
 

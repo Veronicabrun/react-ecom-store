@@ -4,34 +4,57 @@ import styles from "./CartPage.module.scss";
 import { useCart } from "../../context/CartContext";
 
 export default function CartPage() {
-  const {
-    cartItems,
-    increase,
-    decrease,
-    removeFromCart,
-    cartTotal,
-  } = useCart();
-
+  const { cartItems, increase, decrease, removeFromCart, cartTotal } = useCart();
   const navigate = useNavigate();
 
   const handleCheckout = () => {
     navigate("/checkout-success");
   };
 
+  // Hvis handlekurven er tom
   if (cartItems.length === 0) {
     return (
-      <section className={styles.page}>
-        <h1 className={styles.h1}>Your Cart</h1>
-        <div className={styles.empty}>
-          <p>Your cart is empty.</p>
-          <Link to="/" className={styles.back}>
-            Go back to store
+      <section className={styles.section}>
+        <div className={styles.iconWrap} aria-hidden="true">
+          <svg
+            className={styles.icon}
+            width="80"
+            height="80"
+            viewBox="0 0 48 48"
+            role="img"
+          >
+            <circle
+              cx="24"
+              cy="24"
+              r="20"
+              fill="none"
+              stroke="#16a34a"
+              strokeWidth="4"
+            />
+            <path
+              d="M14 24l6 6 14-14"
+              fill="none"
+              stroke="#16a34a"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+
+        <h1 className={styles.title}>Your cart is empty</h1>
+        <p className={styles.lead}>Looks like you haven’t added anything yet.</p>
+
+        <div className={styles.actions}>
+          <Link to="/" className={styles.ctaBtn}>
+            SHOP MORE
           </Link>
         </div>
       </section>
     );
   }
 
+  // Hvis handlekurven har varer
   return (
     <section className={styles.page}>
       <h1 className={styles.h1}>Your Cart</h1>
@@ -43,7 +66,9 @@ export default function CartPage() {
 
             <div className={styles.info}>
               <h3 className={styles.title}>{item.title}</h3>
-              <div className={styles.unitPrice}>{item.price.toFixed(2)} kr pr stk</div>
+              <div className={styles.unitPrice}>
+                {item.price.toFixed(2)} kr pr stk
+              </div>
             </div>
 
             <div className={styles.qtyControls}>
