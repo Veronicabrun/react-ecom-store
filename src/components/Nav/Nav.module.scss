@@ -1,6 +1,11 @@
-.nav { justify-self: center; }
+/* src/components/Nav/Nav.module.scss */
 
-.list {
+.nav {
+  /* container ligger i header-grid */
+}
+
+/* Desktop-liste */
+.listDesktop {
   display: flex;
   gap: 1rem;
   list-style: none;
@@ -12,13 +17,137 @@
   text-decoration: none;
   color: #0c0d07;
   font-weight: 500;
-  padding: .35rem .5rem;
-  border-radius: .5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
 }
 
-.link:hover { background: rgba(0,0,0,.04); }
+.link:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
 
 .active {
   color: #d96b52;
-  background: rgba(217,107,82,.12);
+  background: rgba(217, 107, 82, 0.12);
+}
+
+/* Toggle / hamburger – vises kun på mobil */
+.menuToggleButton {
+  display: none; /* vises i mobil-mediaquery */
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 28px;
+  height: 24px;
+  padding: 0;
+  margin-top: 0.35rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menuToggleButton span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-radius: 999px;
+  background: #0c0d07;
+}
+
+/* Fullscreen mobilmeny */
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+
+  /* Litt transparent lys bakgrunn */
+  background: rgba(243, 242, 241, 0.9);
+  backdrop-filter: blur(2px);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  animation: slideIn 0.25s ease-out forwards;
+}
+
+.mobileMenuInner {
+  width: 100%;
+  max-width: 1200px;
+  padding: 1.5rem 1.25rem;
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+/* “Menu” med strek under */
+.mobileMenuTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0c0d07;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.mobileMenuTitle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  border: 0;
+  background: transparent;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #0c0d07;
+}
+
+.mobileMenuList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.mobileMenuList .link {
+  display: inline-flex;
+  font-size: 1.1rem;
+  padding: 0.4rem 0;
+}
+
+/* Slide inn fra venstre */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Mobil: skjul desktop-liste, vis toggle-knapp */
+@media (max-width: 767px) {
+  .listDesktop {
+    display: none;
+  }
+
+  .menuToggleButton {
+    display: inline-flex;
+  }
+}
+
+/* Desktop: ingen mobilmeny */
+@media (min-width: 768px) {
+  .mobileMenu {
+    display: none;
+  }
 }

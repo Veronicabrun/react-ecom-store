@@ -3,6 +3,7 @@ import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import styles from "./HomePage.module.scss";
 
 const URL = "https://v2.api.noroff.dev/online-shop";
@@ -31,43 +32,26 @@ export default function HomePage() {
       .slice(0, 8);
   }, [products, normQuery]);
 
-  if (isLoading) return <div className={styles.state}>Loading products…</div>;
-  if (isError) return <div className={styles.state}>Error loading products.</div>;
+  if (isLoading) {
+    return <div className={styles.state}>Loading products…</div>;
+  }
+
+  if (isError) {
+    return <div className={styles.state}>Error loading products.</div>;
+  }
 
   return (
     <section className={styles.section}>
       <h1 className={styles.heading}>Products</h1>
 
-      {/* Look-ahead søk med ikon */}
+      {/* Look-ahead søk (nå via SearchBar-komponenten) */}
       <div className={styles.searchWrap}>
-        {/* Ikon – ren dekorasjon */}
-        <svg
-          className={styles.searchIcon}
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            d="M21 21l-4.2-4.2M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-
-        <input
-          type="search"
-          className={styles.searchInput}
-          placeholder="Search products…"
+        <SearchBar
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          aria-label="Search products"
-          aria-autocomplete="list"
-          aria-expanded={suggestions.length > 0}
-          aria-controls="suggestions"
+          onChange={setQuery}
+          placeholder="Search products…"
+          ariaControls="suggestions"
+          ariaExpanded={suggestions.length > 0}
         />
 
         {query && suggestions.length > 0 && (

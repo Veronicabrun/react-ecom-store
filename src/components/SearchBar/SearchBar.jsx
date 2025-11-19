@@ -2,7 +2,13 @@
 import React from "react";
 import styles from "./SearchBar.module.scss";
 
-export default function SearchBar({ value, onChange, placeholder = "Search products…" }) {
+export default function SearchBar({
+  value,
+  onChange,
+  placeholder = "Search products…",
+  ariaControls,
+  ariaExpanded,
+}) {
   return (
     <div className={styles.wrap}>
       {/* Dekorativt ikon */}
@@ -31,6 +37,9 @@ export default function SearchBar({ value, onChange, placeholder = "Search produ
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         aria-label="Search products"
+        aria-autocomplete="list"
+        aria-controls={ariaControls}
+        aria-expanded={ariaExpanded}
       />
 
       {value && (
