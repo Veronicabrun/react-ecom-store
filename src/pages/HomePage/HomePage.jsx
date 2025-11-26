@@ -1,19 +1,17 @@
-// src/pages/HomePage/HomePage.jsx
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import { PRODUCTS_ENDPOINT } from "../../config/api"; // 👈 NYTTER CONFIG
 import styles from "./HomePage.module.scss";
-
-const URL = "https://v2.api.noroff.dev/online-shop";
 
 function normalize(str = "") {
   return str.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
 }
 
 export default function HomePage() {
-  const { data: products, isLoading, isError } = useApi(URL);
+  const { data: products, isLoading, isError } = useApi(PRODUCTS_ENDPOINT);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -44,7 +42,6 @@ export default function HomePage() {
     <section className={styles.section}>
       <h1 className={styles.heading}>Products</h1>
 
-      {/* Look-ahead søk (nå via SearchBar-komponenten) */}
       <div className={styles.searchWrap}>
         <SearchBar
           value={query}
@@ -75,7 +72,6 @@ export default function HomePage() {
         )}
       </div>
 
-      {/* Grid med (filtrerte) produkter */}
       {filtered.length === 0 ? (
         <p className={styles.muted}>No products to show.</p>
       ) : (

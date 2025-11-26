@@ -1,47 +1,26 @@
 // src/pages/ProductPage/ProductPage.jsx
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./ProductPage.module.scss";
 import { useCart } from "../../context/CartContext";
-
-const BASE = "https://v2.api.noroff.dev/online-shop";
+import useApi from "../../hooks/useApi";
+import { PRODUCT_ENDPOINT } from "../../config/api";
 
 export default function ProductPage() {
   const { id } = useParams();
   const { addToCart } = useCart();
-
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
-  useEffect(() => {
-    let active = true;
+  // 🔹 Bruker custom hook – akkurat som HomePage
+  const { data: product, isLoading, isError } = useApi(PRODUCT_ENDPOINT(id));
 
-    async function getProduct() {
-      try {
-        setError(false);
-        setLoading(true);
-        const res = await fetch(`${BASE}/${id}`);
-        if (!res.ok) throw new Error("Failed to fetch product");
-        const json = await res.json();
-        if (active) setData(json.data ?? json);
-      } catch (e) {
-        console.error(e);
-        if (active) setError(true);
-      } finally {
-        if (active) setLoading(false);
-      }
-    }
+  if (isLoading) {
+    return <div className={styles.state}>Loading product…</div>;
+  }
 
-    getProduct();
-    return () => {
-      active = false;
-    };
-  }, [id]);
-
-  if (loading) return <div className={styles.state}>Loading product…</div>;
-  if (error || !data) return <div className={styles.state}>Could not load product.</div>;
+  if (isError || !product) {
+    return <div className={styles.state}>Could not load product.</div>;
+  }
 
   const {
     id: pid,
@@ -51,21 +30,26 @@ export default function ProductPage() {
     price,
     discountedPrice,
     reviews = [],
-  } = data;
+  } = product;
 
-  const hasDiscount = discountedPrice < price;
-  const discountPct = hasDiscount ? Math.round(((price - discountedPrice) / price) * 100) : 0;
+  // 🔹 Sikre tallverdier før toFixed (fikser feilen du fikk)
+  const safePrice = Number(price) || 0;
+  const safeDiscounted = Number(discountedPrice ?? price) || safePrice;
+
+  const hasDiscount = safeDiscounted < safePrice;
+  const discountPct = hasDiscount
+    ? Math.round(((safePrice - safeDiscounted) / safePrice) * 100)
+    : 0;
 
   function handleAdd() {
     addToCart({
       id: pid,
       title,
-      price: discountedPrice,
+      price: safeDiscounted,
       imageUrl: image?.url || null,
       qty: 1,
     });
 
-    // Vis toast-melding i 2.5s
     setShowToast(true);
     setTimeout(() => setShowToast(false), 2500);
   }
@@ -76,7 +60,6 @@ export default function ProductPage() {
 
   return (
     <div className={styles.page}>
-      {/* Toast øverst til høyre – bruker samme shopping bag-ikon som CartIcon.jsx */}
       {showToast && (
         <div className={styles.toast} role="status" aria-live="polite">
           <div className={styles.toastIcon} aria-hidden="true">
@@ -87,7 +70,6 @@ export default function ProductPage() {
               viewBox="0 0 24 24"
               fill="none"
             >
-              {/* Posekropp */}
               <path
                 d="M5 8.5h14l-1.2 11a2 2 0 0 1-2 1.5H8.2a2 2 0 0 1-2-1.5L5 8.5Z"
                 stroke="currentColor"
@@ -96,7 +78,6 @@ export default function ProductPage() {
                 strokeLinejoin="round"
                 fill="none"
               />
-              {/* Håndtak */}
               <path
                 d="M8.5 8.5V7.6a3.5 3.5 0 0 1 7 0v0.9"
                 stroke="currentColor"
@@ -105,7 +86,6 @@ export default function ProductPage() {
                 strokeLinejoin="round"
                 fill="none"
               />
-              {/* Nagler */}
               <circle cx="9" cy="10.2" r="0.7" fill="currentColor" />
               <circle cx="15" cy="10.2" r="0.7" fill="currentColor" />
             </svg>
@@ -127,13 +107,19 @@ export default function ProductPage() {
           <h1 className={styles.title}>{title}</h1>
 
           <div className={styles.prices}>
-            <span className={styles.now}>{discountedPrice.toFixed(2)} kr</span>
-            {hasDiscount && <span className={styles.before}>{price.toFixed(2)} kr</span>}
+            <span className={styles.now}>
+              {safeDiscounted.toFixed(2)} kr
+            </span>
+            {hasDiscount && (
+              <span className={styles.before}>{safePrice.toFixed(2)} kr</span>
+            )}
           </div>
 
           <p className={styles.desc}>{description}</p>
 
-          <button className={styles.btn} onClick={handleAdd}>Add to cart</button>
+          <button className={styles.btn} onClick={handleAdd}>
+            Add to cart
+          </button>
         </div>
       </div>
 
