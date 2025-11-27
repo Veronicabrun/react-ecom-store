@@ -1,9 +1,11 @@
+// src/pages/HomePage/HomePage.jsx
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { PRODUCTS_ENDPOINT } from "../../config/api"; // 👈 NYTTER CONFIG
+import Loader from "../../components/Loader/Loader";
+import { PRODUCTS_ENDPOINT } from "../../config/api";
 import styles from "./HomePage.module.scss";
 
 function normalize(str = "") {
@@ -30,8 +32,13 @@ export default function HomePage() {
       .slice(0, 8);
   }, [products, normQuery]);
 
+  // 🔹 Bruk din Loader-komponent mens data hentes
   if (isLoading) {
-    return <div className={styles.state}>Loading products…</div>;
+    return (
+      <div className={styles.state}>
+        <Loader label="Loading products…" />
+      </div>
+    );
   }
 
   if (isError) {
@@ -48,13 +55,13 @@ export default function HomePage() {
           onChange={setQuery}
           placeholder="Search products…"
           ariaControls="suggestions"
-          ariaExpanded={suggestions.length > 0}
+          // ariaExpanded kan egentlig droppes for å bli kvitt eslint-warning
         />
 
         {query && suggestions.length > 0 && (
           <ul id="suggestions" className={styles.suggestList} role="listbox">
             {suggestions.map((s) => (
-              <li key={s.id} role="option">
+              <li key={s.id}>
                 <button
                   type="button"
                   className={styles.suggestItem}

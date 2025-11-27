@@ -5,6 +5,7 @@ import styles from "./ProductPage.module.scss";
 import { useCart } from "../../context/CartContext";
 import useApi from "../../hooks/useApi";
 import { PRODUCT_ENDPOINT } from "../../config/api";
+import Loader from "../../components/Loader/Loader";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -15,7 +16,11 @@ export default function ProductPage() {
   const { data: product, isLoading, isError } = useApi(PRODUCT_ENDPOINT(id));
 
   if (isLoading) {
-    return <div className={styles.state}>Loading product…</div>;
+    return (
+      <div className={styles.state}>
+        <Loader label="Loading product…" />
+      </div>
+    );
   }
 
   if (isError || !product) {
@@ -32,7 +37,7 @@ export default function ProductPage() {
     reviews = [],
   } = product;
 
-  // 🔹 Sikre tallverdier før toFixed (fikser feilen du fikk)
+  // 🔹 Sikre tallverdier før toFixed
   const safePrice = Number(price) || 0;
   const safeDiscounted = Number(discountedPrice ?? price) || safePrice;
 
@@ -107,9 +112,7 @@ export default function ProductPage() {
           <h1 className={styles.title}>{title}</h1>
 
           <div className={styles.prices}>
-            <span className={styles.now}>
-              {safeDiscounted.toFixed(2)} kr
-            </span>
+            <span className={styles.now}>{safeDiscounted.toFixed(2)} kr</span>
             {hasDiscount && (
               <span className={styles.before}>{safePrice.toFixed(2)} kr</span>
             )}
