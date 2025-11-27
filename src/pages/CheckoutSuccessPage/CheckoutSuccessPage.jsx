@@ -50,7 +50,7 @@ export default function CheckoutSuccessPage() {
 
       <div className={styles.actions}>
         <Link to="/" className={styles.ctaBtn}>
-          SHOP MORE
+          Shop more
         </Link>
       </div>
     </section>

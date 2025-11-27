@@ -15,30 +15,36 @@ export default function CartPage() {
   if (cartItems.length === 0) {
     return (
       <section className={styles.section}>
+        {/* NØYTRALT HANDLEKURV-IKON I STEDEN FOR GRØNN HAKE */}
         <div className={styles.iconWrap} aria-hidden="true">
           <svg
             className={styles.icon}
-            width="80"
-            height="80"
-            viewBox="0 0 48 48"
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
             role="img"
           >
-            <circle
-              cx="24"
-              cy="24"
-              r="20"
-              fill="none"
-              stroke="#16a34a"
-              strokeWidth="4"
-            />
+            {/* posekropp */}
             <path
-              d="M14 24l6 6 14-14"
+              d="M5 8.5h14l-1.2 11a2 2 0 0 1-2 1.5H8.2a2 2 0 0 1-2-1.5L5 8.5Z"
               fill="none"
-              stroke="#16a34a"
-              strokeWidth="4"
+              stroke="#0c0d07"
+              strokeWidth="1.8"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
+            {/* håndtak */}
+            <path
+              d="M8.5 8.5V7.6a3.5 3.5 0 0 1 7 0v0.9"
+              fill="none"
+              stroke="#0c0d07"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            {/* små "nagler" */}
+            <circle cx="9" cy="10.2" r="0.7" fill="#0c0d07" />
+            <circle cx="15" cy="10.2" r="0.7" fill="#0c0d07" />
           </svg>
         </div>
 
@@ -47,7 +53,7 @@ export default function CartPage() {
 
         <div className={styles.actions}>
           <Link to="/" className={styles.ctaBtn}>
-            SHOP MORE
+            Shop more
           </Link>
         </div>
       </section>
