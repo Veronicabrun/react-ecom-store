@@ -1,3 +1,6 @@
+/* src/pages/CartPage/CartPage.module.scss */
+@use "../../scss/variables" as *;
+
 /* --- Layout for vanlig cart (med varer) --- */
 .page {
   max-width: 900px;
@@ -24,9 +27,9 @@
   align-items: center;
   gap: 1rem;
   padding: 0.9rem 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 0.75rem;
-  background: #fff;
+  border: 1px solid $color-border-soft;
+  border-radius: $radius-md;
+  background: $color-surface; 
 }
 
 .thumb {
@@ -46,7 +49,7 @@
 
 .title {
   font-weight: 700;
-  color: #0c0d07;
+  color: $color-text;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -80,7 +83,7 @@
 
 .line {
   font-weight: 700;
-  color: #0c0d07;
+  color: $color-text;
   white-space: nowrap;
 }
 
@@ -90,7 +93,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  color: #d96b52;
+  color: $color-accent;          // bruk accent her
   background: transparent;
   border: 0;
   padding: 0;
@@ -100,7 +103,7 @@
 }
 
 .remove:hover {
-  background: rgba(217, 107, 82, 0.08);
+  background: rgba(229, 161, 62, 0.12);
 }
 
 .summary {
@@ -117,8 +120,8 @@
 }
 
 .checkout {
-  background: #0c0d07;
-  color: #fff;
+  background: $color-primary;
+  color: $color-primary-text;
   padding: 0.6rem 1.2rem;
   border-radius: 0.5rem;
   border: none;
@@ -126,10 +129,10 @@
 }
 
 .checkout:hover {
-  background: #222;
+  background: $color-primary-hover;
 }
 
-/* --- Tom cart (sentrert design, samme stil som CheckoutSuccess) --- */
+/* --- Tom cart (sentrert design) --- */
 .section {
   position: relative;
   z-index: 1;
@@ -137,9 +140,9 @@
   max-width: 720px;
   margin: 4rem auto;
   text-align: center;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 0.75rem;
+  background: $color-surface;
+  border: 1px solid $color-border-soft;
+  border-radius: $radius-md;
 }
 
 .iconWrap {
@@ -160,7 +163,7 @@
 .title {
   font-size: 1.75rem;
   margin: 0.25rem 0 0.25rem;
-  color: #0c0d07;
+  color: $color-text;
 }
 
 .lead {
@@ -178,8 +181,8 @@
   justify-content: center;
   padding: 0.6rem 1.1rem;
   border-radius: 0.5rem;
-  background: #0c0d07;
-  color: #fff;
+  background: $color-primary;
+  color: $color-primary-text;
   text-decoration: none;
   font-weight: 700;
   border: 0;
@@ -187,7 +190,7 @@
 }
 
 .ctaBtn:hover {
-  background: #222;
+  background: $color-primary-hover;
 }
 
 /* Mobilvisning */

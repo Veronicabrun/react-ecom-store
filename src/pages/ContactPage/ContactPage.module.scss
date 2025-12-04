@@ -1,3 +1,6 @@
+/* src/pages/ContactPage/ContactPage.module.scss */
+@use "../../scss/variables" as *;
+
 .section {
   width: min(900px, 100%);
   margin: 2rem auto;
@@ -11,7 +14,6 @@
   border: 1px solid rgba(0,0,0,.08);
   border-radius: 12px;
   padding: 1rem;
-  /* sikrer at innhold ikke stikker utenfor pga padding */
   box-sizing: border-box;
 }
 
@@ -20,20 +22,20 @@
 }
 
 .field {
-  margin-bottom: .8rem; /* TETTER AVSTANDEN mellom feltene */
+  margin-bottom: .8rem;
 }
 
 label {
   display: block;
   margin-bottom: .35rem;
   font-size: .92rem;
-  color: #0c0d07;
+  color: $color-text;
 }
 
 .control {
   display: block;
   width: 100%;
-  box-sizing: border-box; /* hindrer overflow */
+  box-sizing: border-box;
   padding: .55rem .7rem;
   border: 1px solid rgba(0,0,0,.15);
   border-radius: .5rem;
@@ -47,7 +49,7 @@ label {
 
 .error {
   margin-top: .35rem;
-  color: #d96b52;
+  color: $color-accent;
   font-size: .85rem;
 }
 
@@ -64,13 +66,14 @@ label {
 }
 
 .submit {
-  background: #0c0d07;
-  color: #fff;
+  background: $color-primary;        // ⬅️ #213638
+  color: $color-primary-text;        // ⬅️ #CFE7E5
   padding: .55rem 1rem;
   border: 0;
   border-radius: .5rem;
   cursor: pointer;
 }
-.submit:hover { background: #222; }
 
-
+.submit:hover { 
+  background: $color-primary-hover;
+}

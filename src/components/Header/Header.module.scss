@@ -1,11 +1,12 @@
 /* src/components/Header/Header.module.scss */
+@use "../../scss/variables" as *;
 
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #ffffff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: $color-primary; // #213638
+  border-bottom: 1px solid $color-border-soft;
 }
 
 /* Mobil først */
@@ -30,6 +31,9 @@
   gap: 0.4rem;
   text-decoration: none;
   margin-left: 0.25rem;
+  font-size: 22px;
+   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 }
 
 .navContainer {
@@ -48,18 +52,20 @@
   line-height: 1;
 }
 
+/* “Nordic” – lys på mørk bakgrunn */
 .brandLeft {
-  color: #0c0d07;
+  color: $color-primary-text; // #CFE7E5
 }
 
+/* “Ecom” – accent/gull */
 .brandRight {
-  color: #d96b52;
+  color: $color-accent; // #E5A13E
 }
 
 .dot {
   transform: translateY(-1px);
   font-weight: 900;
-  color: #d96b52;
+  color: $color-accent;
 }
 
 /* Desktop – “logo | nav | cart” på én linje */

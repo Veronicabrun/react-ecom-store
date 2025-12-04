@@ -23,6 +23,7 @@ import App from "./App";
 import "./scss/style.scss"; // 🔹 bruk dine SCSS-stiler i stedet for index.css
 // ⬇️ legg til CartProvider
 import { CartProvider } from "./context/CartContext";
+import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

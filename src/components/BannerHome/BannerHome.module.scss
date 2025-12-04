@@ -1,0 +1,142 @@
+/* src/components/BannerHome/BannerHome.module.scss */
+@use "../../scss/variables" as *;
+
+.section {
+  padding: 3rem 1.5rem 2.5rem;
+  background: $color-bg; // lys bakgrunn
+}
+
+.inner {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  position: relative;         // 👈 gjør at bildet kan ligge oppå
+}
+
+/* VENSTRE: stort tekstkort */
+.textCard {
+  background: $color-primary;       // mørk grønn
+  color: $color-primary-text;       // lys tekst
+  border-radius: 2rem;
+  padding: 6rem 2.25rem;
+  max-width: 720px;                 // ca som eksemplet
+  min-height: 410px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16);
+}
+
+/* typografi inni kortet */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  margin: 0 0 0.9rem;
+  color: $color-accent;
+}
+
+.title {
+  margin: 0 0 1.1rem;
+  font-size: 2.1rem;
+  line-height: 1.18;
+}
+
+.lead {
+  max-width: 30rem;
+  margin: 0 0 1.6rem;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* knapper */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.primaryBtn {
+  background: $color-primary-text;   // lys knapp
+  color: $color-primary;             // mørk tekst
+}
+
+.primaryBtn:hover {
+  background: lighten($color-primary-text, 4%);
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: $color-primary-text;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.secondaryBtn:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* HØYRE: bilde som overlapper tekstkortet */
+.imageCard {
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+  /* 🔹 MER overlap mot venstre + litt høyere opp */
+  transform: translate(-8%, -56%);
+  /*        ^     ^ 
+     x: negativ = mer inn mot venstre
+     y: mer enn -50% = litt opp   */
+
+  width: min(470px, 45%);
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+  background: #ddd;
+}
+
+.imageCard img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Mobil / små skjermer – legg alt under hverandre */
+@media (max-width: 860px) {
+
+  .inner {
+    display: flex;
+    flex-direction: column;  // 👈 gjør stacking mulig
+  }
+
+  .imageCard {
+    order: 1;                // 👈 bilde først
+    position: static;
+    transform: none;
+    width: 100%;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .textCard {
+    order: 2;                // 👈 tekst etterpå
+    padding: 2.2rem 1.8rem;
+    border-radius: 1.4rem;
+    max-width: 100%;
+  }
+}
+

@@ -1,3 +1,6 @@
+/* src/pages/ProductPage/ProductPage.module.scss */
+@use "../../scss/variables" as *;
+
 .page {
   display: grid;
   gap: 2rem;
@@ -18,7 +21,7 @@
   position: relative;
   aspect-ratio: 4 / 3;
   background: #f2f2f2;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid $color-border-soft;
   border-radius: 0.75rem;
   overflow: hidden;
 
@@ -34,7 +37,7 @@
   position: absolute;
   left: 0.75rem;
   top: 0.75rem;
-  background: #d96b52;
+  background: $color-accent;   // #E5A13E
   color: #fff;
   font-weight: 700;
   font-size: 0.85rem;
@@ -49,7 +52,7 @@
 }
 
 .title {
-  color: #0c0d07;
+  color: $color-text;
 }
 
 .prices {
@@ -59,7 +62,7 @@
 }
 
 .now {
-  color: #0c0d07;
+  color: $color-text;
   font-size: 1.4rem;
   font-weight: 800;
 }
@@ -73,14 +76,15 @@
   color: #333;
 }
 
+/* ⬇️ KNAPPEN – viktig del */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.6rem 0.9rem;
   border-radius: 0.5rem;
-  background: #0c0d07;
-  color: #fff;
+  background: $color-primary;       // #213638
+  color: $color-primary-text;       // #CFE7E5
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -88,7 +92,7 @@
 }
 
 .btn:hover {
-  background: #222;
+  background: $color-primary-hover;
 }
 
 .reviews {
@@ -113,7 +117,7 @@
 
 .reviewItem {
   padding: 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid $color-border-soft;
   border-radius: 0.5rem;
   background: #fff;
 }
@@ -125,7 +129,7 @@
   margin-bottom: 0.3rem;
 }
 
-/* ✅ Moderne toast */
+/* Toast beholder vi som før */
 .toast {
   position: fixed;
   top: 1.5rem;
@@ -137,7 +141,7 @@
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #0c0d07;
+  color: $color-text;
   border-radius: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   z-index: 9999;
@@ -147,7 +151,7 @@
 .toastIcon svg {
   width: 22px;
   height: 22px;
-  stroke: #0c0d07;
+  stroke: $color-text;
 }
 
 .toastText {
@@ -158,7 +162,7 @@
   strong {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #0c0d07;
+    color: $color-text;
   }
 
   span {

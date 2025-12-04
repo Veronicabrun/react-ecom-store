@@ -1,26 +1,44 @@
+/* src/components/CartIcon/CartIcon.module.scss */
+@import "../../scss/variables";
+
 .button {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
   border: 0;
   background: transparent;
+
+  /* 👇 selve handlekurv-ikonet får fargen #CFE7E5 */
+  color: $color-primary-text; // #CFE7E5
+
   cursor: pointer;
-  padding: .25rem;
-  justify-self: end;
 }
 
-.icon { color: #0c0d07; }
+/* SVG-en bruker som regel stroke="currentColor", så den arver fargen over. */
 
+/* Badgen med antall varer */
 .badge {
   position: absolute;
-  top: -6px;
-  right: -6px;
-  min-width: 1.1rem;
-  height: 1.1rem;
-  padding: 0 .25rem;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
   border-radius: 999px;
-  background: #d96b52;
-  color: #fff;
-  font-size: .72rem;
-  line-height: 1.1rem;
-  text-align: center;
+
+  /* 👇 bakgrunn på badgen: #E5A13E */
+  background: $color-accent; // #E5A13E
+
+  /* 👇 tall-fargen – mørk for kontrast */
+  color: $color-text; // #213638
+
+  font-size: 0.7rem;
   font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }

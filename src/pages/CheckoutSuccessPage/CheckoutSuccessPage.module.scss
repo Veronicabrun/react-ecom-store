@@ -1,3 +1,6 @@
+/* src/pages/CheckoutSuccessPage/CheckoutSuccessPage.module.scss */
+@use "../../scss/variables" as *;
+
 .section {
   position: relative;
   z-index: 1;
@@ -5,11 +8,12 @@
   max-width: 720px;
   margin: 2rem auto;
   text-align: center;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, .08);
-  border-radius: .75rem;
+  background: $color-surface;            
+  border: 1px solid $color-border-soft;
+  border-radius: $radius-md;
 }
 
+/* Ikonet har ikke bakgrunn – kun ikonlinjer i SVG */
 .iconWrap {
   display: inline-flex;
   align-items: center;
@@ -27,31 +31,34 @@
 .title {
   font-size: 1.75rem;
   margin: 0.25rem 0 0.25rem;
-  color: #0c0d07;
+  color: $color-text;               // #213638
 }
 
 .lead {
   margin: 0 0 1rem;
-  color: #333;
+  color: $color-text;
+  opacity: 0.75;
 }
 
 .actions {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .ctaBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: .6rem 1.1rem;
-  border-radius: .5rem;
-  background: #0c0d07;
-  color: #fff;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0.5rem;
+  background: $color-primary;       // #213638
+  color: $color-primary-text;       // #CFE7E5
   text-decoration: none;
   font-weight: 700;
   border: 0;
+  text-transform: none;
 }
 
 .ctaBtn:hover {
-  background: #222;
+  background: $color-primary-hover;
 }
+

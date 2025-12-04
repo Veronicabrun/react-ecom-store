@@ -7,7 +7,6 @@ export default function SearchBar({
   onChange,
   placeholder = "Search products…",
   ariaControls,
-  ariaExpanded,
 }) {
   return (
     <div className={styles.wrap}>
@@ -39,7 +38,6 @@ export default function SearchBar({
         aria-label="Search products"
         aria-autocomplete="list"
         aria-controls={ariaControls}
-        aria-expanded={ariaExpanded}
       />
 
       {value && (

@@ -5,6 +5,7 @@ import useApi from "../../hooks/useApi";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Loader from "../../components/Loader/Loader";
+import BannerHome from "../../components/BannerHome/BannerHome";
 import { PRODUCTS_ENDPOINT } from "../../config/api";
 import styles from "./HomePage.module.scss";
 
@@ -32,7 +33,6 @@ export default function HomePage() {
       .slice(0, 8);
   }, [products, normQuery]);
 
-  // 🔹 Bruk din Loader-komponent mens data hentes
   if (isLoading) {
     return (
       <div className={styles.state}>
@@ -46,48 +46,51 @@ export default function HomePage() {
   }
 
   return (
-    <section className={styles.section}>
-      <h1 className={styles.heading}>Products</h1>
+    <>
+      <BannerHome />
 
-      <div className={styles.searchWrap}>
-        <SearchBar
-          value={query}
-          onChange={setQuery}
-          placeholder="Search products…"
-          ariaControls="suggestions"
-          // ariaExpanded kan egentlig droppes for å bli kvitt eslint-warning
-        />
+      <section className={styles.section}>
+        <h1 className={styles.heading}>Products</h1>
 
-        {query && suggestions.length > 0 && (
-          <ul id="suggestions" className={styles.suggestList} role="listbox">
-            {suggestions.map((s) => (
-              <li key={s.id}>
-                <button
-                  type="button"
-                  className={styles.suggestItem}
-                  onClick={() => navigate(`/product/${s.id}`)}
-                >
-                  {s.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+        <div className={styles.searchWrap}>
+          <SearchBar
+            value={query}
+            onChange={setQuery}
+            placeholder="Search products…"
+            ariaControls="suggestions"
+          />
 
-        {query && suggestions.length === 0 && (
-          <div className={styles.noSuggest}>No matches</div>
-        )}
-      </div>
+          {query && suggestions.length > 0 && (
+            <ul id="suggestions" className={styles.suggestList} role="listbox">
+              {suggestions.map((s) => (
+                <li key={s.id}>
+                  <button
+                    type="button"
+                    className={styles.suggestItem}
+                    onClick={() => navigate(`/product/${s.id}`)}
+                  >
+                    {s.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
 
-      {filtered.length === 0 ? (
-        <p className={styles.muted}>No products to show.</p>
-      ) : (
-        <div className={styles.grid}>
-          {filtered.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
+          {query && suggestions.length === 0 && (
+            <div className={styles.noSuggest}>No matches</div>
+          )}
         </div>
-      )}
-    </section>
+
+        {filtered.length === 0 ? (
+          <p className={styles.muted}>No products to show.</p>
+        ) : (
+          <div className={styles.grid}>
+            {filtered.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        )}
+      </section>
+    </>
   );
 }

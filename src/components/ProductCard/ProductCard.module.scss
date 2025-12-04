@@ -1,10 +1,13 @@
+/* src/components/ProductCard/ProductCard.module.scss */
+@use "../../scss/variables" as *;
+
 .card {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.08);
-  border-radius: 12px;
+  background: $color-surface;               
+  border: 1px solid $color-border-soft;
+  border-radius: $radius-md;
   overflow: hidden;
 }
 
@@ -13,38 +16,38 @@
   position: relative;
   display: block;
   inline-size: 100%;
-  block-size: 220px;  /* mobilhøyde */
+  block-size: 220px;
 
   @media (min-width: 768px) {
-    block-size: 280px; /* større på større skjermer */
+    block-size: 280px;
   }
 
   img {
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: cover; /* beskjær pent i stedet for å strekke */
+    object-fit: cover;
   }
 }
 
 .badge {
   position: absolute;
-  left: .75rem;
-  top: .75rem;
-  background: #d96b52;
-  color: #fff;
+  left: 0.75rem;
+  top: 0.75rem;
+  background: $color-accent;   // #E5A13E
+  color: #ffffff;
   font-weight: 700;
-  font-size: .8rem;
-  padding: .2rem .5rem;
-  border-radius: .5rem;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .body {
   display: flex;
   flex-direction: column;
-  gap: .55rem;
-  padding: .9rem .9rem 1rem;
-  flex: 1; /* lar actions skyves til bunn */
+  gap: 0.55rem;
+  padding: 0.9rem 0.9rem 1rem;
+  flex: 1;
 }
 
 .title {
@@ -62,21 +65,22 @@
   }
 }
 
+
 .prices {
   display: flex;
   align-items: baseline;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .now {
-  color: #0c0d07;
+  color: $color-text;
   font-weight: 700;
 }
 
 .before {
   color: #777;
   text-decoration: line-through;
-  font-size: .95rem;
+  font-size: 0.95rem;
 }
 
 /* Knappen skal ikke fylle hele bredden */
@@ -85,21 +89,21 @@
 }
 
 .btn {
-  display: inline-flex;     /* bredde følger innhold */
+  display: inline-flex;
   align-items: center;
-  gap: .4rem;
+  gap: 0.4rem;
   width: auto;
-  max-width: max-content;   /* aldri strekk til 100% */
-  padding: .5rem .8rem;
-  border-radius: .5rem;
-  border: 1px solid rgba(0,0,0,.12);
-  background: #fff;
-  color: #0c0d07;
+  max-width: max-content;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.5rem;
+  border: 0;
+  background: $color-primary;        // #213638
+  color: $color-primary-text;        // #CFE7E5
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;
 }
 
 .btn:hover {
-  background: rgba(0,0,0,.04);
+  background: $color-primary-hover;
 }

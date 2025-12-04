@@ -21,20 +21,21 @@ export default function CheckoutSuccessPage() {
           viewBox="0 0 48 48"
           role="img"
         >
-          {/* Sirkel med kun stroke (ingen fyll) */}
+          {/* Sirkel */}
           <circle
             cx="24"
             cy="24"
             r="20"
             fill="none"
-            stroke="#16a34a"
+            stroke="#E5A13E"
             strokeWidth="4"
           />
-          {/* Hake med kun stroke (ingen fyll) */}
+
+          {/* Hake */}
           <path
             d="M14 24l6 6 14-14"
             fill="none"
-            stroke="#16a34a"
+            stroke="#E5A13E"
             strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -56,4 +57,3 @@ export default function CheckoutSuccessPage() {
     </section>
   );
 }
-
