@@ -18,20 +18,20 @@
 .link {
   position: relative;
   text-decoration: none;
-  color: $color-primary-text;        // #CFE7E5 på mørk header
+  color: $color-primary-text;  // #CFE7E5 på mørk header
   font-weight: 500;
   padding: 0.35rem 0.5rem;
-  border-radius: 0;                  // ❌ ingen pill
+  border-radius: 0;            // ingen pill
   font-size: 0.95rem;
 }
 
 .link:hover {
-  opacity: 0.8;                      // liten “fade” i stedet for bakgrunn
+  opacity: 0.8;                // liten “fade” i stedet for bakgrunn
 }
 
 /* Aktiv lenke – kun strek under i E5A13E */
 .active {
-  color: $color-primary-text;        // behold samme tekstfarge
+  color: $color-primary-text;  // behold samme tekstfarge
 
   &::after {
     content: "";
@@ -40,14 +40,14 @@
     bottom: -2px;
     width: 100%;
     height: 2px;
-    background: $color-accent;       // #E5A13E
+    background: $color-accent; // #E5A13E
     border-radius: 2px;
   }
 }
 
 /* Toggle / hamburger – vises kun på mobil */
 .menuToggleButton {
-  display: none;                     /* vises i mobil-mediaquery */
+  display: none;               /* vises i mobil-mediaquery */
   flex-direction: column;
   justify-content: center;
   gap: 4px;
@@ -139,7 +139,7 @@
 .mobileMenuList .link {
   display: inline-flex;
   font-size: 1.1rem;
-  padding: 0.4rem 0;                 // samme link-stil, ingen pill
+  padding: 0.4rem 0;  // samme link-stil, ingen pill
 }
 
 /* Slide inn fra venstre */

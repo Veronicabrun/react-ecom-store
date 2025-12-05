@@ -1,33 +1,32 @@
 /* src/components/BannerHome/BannerHome.module.scss */
 @use "../../scss/variables" as *;
 
+/* FULL-BLEED BANNER (går fra kant til kant) */
 .section {
-  padding: 3rem 1.5rem 2.5rem;
-  background: $color-bg; // lys bakgrunn
+  position: relative;
+  /* gjør at bakgrunnen strekker seg fullt ut, selv om main har max-width */
+  margin-inline: calc(50% - 50vw);
+  padding: 3.5rem 1.5rem 5rem;
+  background: $color-surface;   
+  color: $color-text;  // mørk tekst (#223741)
+  overflow: hidden;
 }
 
+/* Innholdet inni banneret */
 .inner {
   width: min(1200px, 100%);
   margin-inline: auto;
-  position: relative;         // 👈 gjør at bildet kan ligge oppå
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+  align-items: center;
+  gap: 2.5rem;
 }
 
-/* VENSTRE: stort tekstkort */
-.textCard {
-  background: $color-primary;       // mørk grønn
-  color: $color-primary-text;       // lys tekst
-  border-radius: 2rem;
-  padding: 6rem 2.25rem;
-  max-width: 720px;                 // ca som eksemplet
-  min-height: 410px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16);
+/* VENSTRE: tekst */
+.text {
+  max-width: 520px;
 }
 
-/* typografi inni kortet */
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -37,17 +36,18 @@
 }
 
 .title {
-  margin: 0 0 1.1rem;
-  font-size: 2.1rem;
-  line-height: 1.18;
+  margin: 0 0 1rem;
+  font-size: 2.3rem;
+  line-height: 1.15;
+  color: $color-text;                
 }
 
 .lead {
-  max-width: 30rem;
   margin: 0 0 1.6rem;
   font-size: 0.98rem;
   line-height: 1.5;
   opacity: 0.9;
+  color: $color-text;
 }
 
 /* knapper */
@@ -71,72 +71,58 @@
   cursor: pointer;
 }
 
+/* mørk knapp på lys bakgrunn */
 .primaryBtn {
-  background: $color-primary-text;   // lys knapp
-  color: $color-primary;             // mørk tekst
+  background: $color-text;           // #223741
+  color: $color-primary-text;        // #d2e6e3
 }
 
 .primaryBtn:hover {
-  background: lighten($color-primary-text, 4%);
+  background: lighten($color-text, 6%);
 }
 
+/* outline-knapp */
 .secondaryBtn {
   background: transparent;
-  color: $color-primary-text;
-  border-color: rgba(255, 255, 255, 0.3);
+  color: $color-text;
+  border: 2px solid $color-text; // eller $color-accent om du vil ha gul kant
 }
 
 .secondaryBtn:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(34, 55, 65, 0.06);
 }
 
-/* HØYRE: bilde som overlapper tekstkortet */
-.imageCard {
-  position: absolute;
-  top: 50%;
-  right: 0;
-
-  /* 🔹 MER overlap mot venstre + litt høyere opp */
-  transform: translate(-8%, -56%);
-  /*        ^     ^ 
-     x: negativ = mer inn mot venstre
-     y: mer enn -50% = litt opp   */
-
-  width: min(470px, 45%);
-  border-radius: 2rem;
+/* HØYRE: bilde – tar litt mer enn halvparten */
+.media {
+  justify-self: end;
+  width: min(540px, 100%);
+  aspect-ratio: 4 / 3;
+  border-radius: 1.75rem;
   overflow: hidden;
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
   background: #ddd;
-}
 
-.imageCard img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-/* Mobil / små skjermer – legg alt under hverandre */
-@media (max-width: 860px) {
-
-  .inner {
-    display: flex;
-    flex-direction: column;  // 👈 gjør stacking mulig
-  }
-
-  .imageCard {
-    order: 1;                // 👈 bilde først
-    position: static;
-    transform: none;
+  img {
     width: 100%;
-    margin: 0 0 1.5rem 0;
-  }
-
-  .textCard {
-    order: 2;                // 👈 tekst etterpå
-    padding: 2.2rem 1.8rem;
-    border-radius: 1.4rem;
-    max-width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
   }
 }
 
+/* Responsivt – bilde øverst på mobil */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .media {
+    order: -1;              // bilde øverst
+    justify-self: center;
+    width: 100%;
+  }
+
+  .section {
+    padding-block: 2.5rem 4rem;
+  }
+}

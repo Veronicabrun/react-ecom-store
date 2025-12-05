@@ -49,7 +49,8 @@ export default function HomePage() {
     <>
       <BannerHome />
 
-      <section className={styles.section}>
+      {/* 👇 id brukes av "Browse products"-knappen i banneret */}
+      <section className={styles.section} id="products">
         <h1 className={styles.heading}>Products</h1>
 
         <div className={styles.searchWrap}>

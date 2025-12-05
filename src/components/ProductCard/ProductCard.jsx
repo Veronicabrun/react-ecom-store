@@ -1,3 +1,4 @@
+// src/components/ProductCard/ProductCard.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
@@ -16,7 +17,11 @@ export default function ProductCard({ product }) {
 
   return (
     <article className={styles.card}>
-      <Link to={`/product/${id}`} className={styles.media} aria-label={`Open ${title}`}>
+      <Link
+        to={`/product/${id}`}
+        className={styles.media}
+        aria-label={`Open ${title}`}
+      >
         <img src={src} alt={alt} loading="lazy" />
         {hasDiscount && <span className={styles.badge}>-{discountPct}%</span>}
       </Link>
@@ -28,12 +33,14 @@ export default function ProductCard({ product }) {
 
         <div className={styles.prices}>
           <span className={styles.now}>{discountedPrice.toFixed(2)} kr</span>
-          {hasDiscount && <span className={styles.before}>{price.toFixed(2)} kr</span>}
+          {hasDiscount && (
+            <span className={styles.before}>{price.toFixed(2)} kr</span>
+          )}
         </div>
 
         <div className={styles.actions}>
           <Link to={`/product/${id}`} className={styles.btn}>
-            View product
+            View
           </Link>
         </div>
       </div>

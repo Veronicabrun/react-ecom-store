@@ -12,7 +12,7 @@
   border: 0;
   background: transparent;
 
-  /* 👇 selve handlekurv-ikonet får fargen #CFE7E5 */
+  /* selve handlekurv-ikonet får fargen #CFE7E5 */
   color: $color-primary-text; // #CFE7E5
 
   cursor: pointer;
@@ -30,10 +30,10 @@
   padding: 0 4px;
   border-radius: 999px;
 
-  /* 👇 bakgrunn på badgen: #E5A13E */
+  /* bakgrunn på badgen: #E5A13E */
   background: $color-accent; // #E5A13E
 
-  /* 👇 tall-fargen – mørk for kontrast */
+  /* tall-fargen – mørk for kontrast */
   color: $color-text; // #213638
 
   font-size: 0.7rem;
