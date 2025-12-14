@@ -59,7 +59,7 @@ export default function ProductPage() {
     setTimeout(() => setShowToast(false), 2500);
   }
 
-  const fallbackImg = "https://via.placeholder.com/600x400?text=No+Image";
+  const fallbackImg = "https://placehold.co/600x400?text=No+image";
   const src = image?.url || fallbackImg;
   const alt = image?.alt || title;
 
