@@ -3,10 +3,10 @@ import React, { createContext, useContext, useState } from "react";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // Hver vare: { id, title, price, imageUrl, qty }
+  // Each item: { id, title, price, imageUrl, qty }
   const [cartItems, setCartItems] = useState([]);
 
-  // Legg til produkt (slår sammen på id og øker qty)
+  // Add product (merges on id and increases qty)
   const addToCart = (product, qty = 1) => {
     setCartItems((prev) => {
       const idx = prev.findIndex((p) => p.id === product.id);
@@ -39,9 +39,9 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => setCartItems([]);
 
-  // Badge-tall = sum av qty
+  // Badge number = sum of qty
   const cartCount = cartItems.reduce((sum, p) => sum + p.qty, 0);
-  // Total (nyttig i oppsummering)
+  // Total (useful in summary)
   const cartTotal = cartItems.reduce((sum, p) => sum + p.price * p.qty, 0);
 
   return (

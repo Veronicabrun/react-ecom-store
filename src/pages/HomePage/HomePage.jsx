@@ -49,7 +49,7 @@ export default function HomePage() {
     <>
       <BannerHome />
 
-      {/* 👇 id brukes av "Browse products"-knappen i banneret */}
+      {/* id is used by the "Browse products" button in the banner */}
       <section className={styles.section} id="products">
         <h1 className={styles.heading}>Products</h1>
 

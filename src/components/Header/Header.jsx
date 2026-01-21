@@ -18,12 +18,12 @@ export default function Header() {
           <span className={styles.brandRight}>Ecom</span>
         </Link>
 
-        {/* Nav-plass (grid area) */}
+        {/* Nav */}
         <div className={styles.navContainer}>
           <Nav />
         </div>
 
-        {/* Cart-ikon – holder seg øverst til høyre */}
+        {/* Cart ikon */}
         <div className={styles.cartContainer}>
           <CartIcon />
         </div>

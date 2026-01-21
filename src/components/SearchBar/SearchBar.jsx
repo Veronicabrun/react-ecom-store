@@ -10,7 +10,7 @@ export default function SearchBar({
 }) {
   return (
     <div className={styles.wrap}>
-      {/* Dekorativt ikon */}
+      {/* Decorative icon */}
       <svg
         className={styles.icon}
         width="18"

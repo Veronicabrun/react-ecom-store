@@ -1,7 +1,7 @@
 /* src/pages/CartPage/CartPage.module.scss */
 @use "../../scss/variables" as *;
 
-/* --- Layout for vanlig cart (med varer) --- */
+/* --- Layout for regular cart (with items) --- */
 .page {
   max-width: 900px;
   margin: 2rem auto;
@@ -93,7 +93,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  color: $color-accent;          // bruk accent her
+  color: $color-accent;          
   background: transparent;
   border: 0;
   padding: 0;
@@ -132,7 +132,7 @@
   background: $color-primary-hover;
 }
 
-/* --- Tom cart (sentrert design) --- */
+/* --- Empty cart (centered design) --- */
 .section {
   position: relative;
   z-index: 1;
@@ -153,7 +153,6 @@
   height: 88px;
   margin: 0 auto 0.75rem;
   border-radius: 999px;
-  /* ingen bakgrunn – nøytralt ikon */
 }
 
 .icon {
@@ -193,7 +192,7 @@
   background: $color-primary-hover;
 }
 
-/* Mobilvisning */
+/* Mobile view */
 @media (max-width: 640px) {
   .page {
     margin: 1.5rem auto;
@@ -224,11 +223,10 @@
     grid-area: info;
   }
 
-  /* 🔹 Viktig: la produkt-tittelen brytes på mobil */
   .item .title {
     font-size: 1rem;
-    white-space: normal;      // tillat linjeskift
-    text-overflow: clip;      // ikke ellipsis
+    white-space: normal;      
+    text-overflow: clip;      
     overflow: visible;
   }
 

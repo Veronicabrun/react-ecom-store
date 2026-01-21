@@ -11,11 +11,11 @@ export default function CartPage() {
     navigate("/checkout-success");
   };
 
-  // Hvis handlekurven er tom
+  // If the shopping cart is empty
   if (cartItems.length === 0) {
     return (
       <section className={styles.section}>
-        {/* NØYTRALT HANDLEKURV-IKON I STEDEN FOR GRØNN HAKE */}
+   
         <div className={styles.iconWrap} aria-hidden="true">
           <svg
             className={styles.icon}
@@ -24,7 +24,7 @@ export default function CartPage() {
             viewBox="0 0 24 24"
             role="img"
           >
-            {/* posekropp */}
+      
             <path
               d="M5 8.5h14l-1.2 11a2 2 0 0 1-2 1.5H8.2a2 2 0 0 1-2-1.5L5 8.5Z"
               fill="none"
@@ -33,7 +33,7 @@ export default function CartPage() {
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            {/* håndtak */}
+        
             <path
               d="M8.5 8.5V7.6a3.5 3.5 0 0 1 7 0v0.9"
               fill="none"
@@ -42,7 +42,7 @@ export default function CartPage() {
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            {/* små "nagler" */}
+
             <circle cx="9" cy="10.2" r="0.7" fill="#0c0d07" />
             <circle cx="15" cy="10.2" r="0.7" fill="#0c0d07" />
           </svg>
@@ -60,7 +60,7 @@ export default function CartPage() {
     );
   }
 
-  // Hvis handlekurven har varer
+  // If the shopping cart has items
   return (
     <section className={styles.page}>
       <h1 className={styles.h1}>Your Cart</h1>

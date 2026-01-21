@@ -5,7 +5,7 @@ import ContactPage from "./pages/ContactPage/ContactPage";
 test("renders Contact heading", () => {
   render(<ContactPage />);
 
-  // Sjekker at <h1>Contact</h1> finnes
+  // Checks that <h1>Contact</h1> exists
   const heading = screen.getByRole("heading", { name: /contact/i });
   expect(heading).toBeInTheDocument();
 });

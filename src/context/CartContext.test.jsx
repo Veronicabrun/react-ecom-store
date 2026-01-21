@@ -3,7 +3,7 @@ import React from "react";
 import { render, screen, act } from "@testing-library/react";
 import { CartProvider, useCart } from "./CartContext";
 
-// 🔹 Testkomponent for å lese verdier
+//  Test component for reading values
 const TestReader = () => {
   const {
     cartItems,
@@ -20,7 +20,7 @@ const TestReader = () => {
   );
 };
 
-// 🔹 Testkomponent for å trigge handlinger
+//  Test component to trigger actions
 const TestActions = () => {
   const {
     addToCart,
@@ -122,7 +122,7 @@ describe("CartContext – Advanced tests", () => {
     );
 
     act(() => screen.getByTestId("add").click());
-    act(() => screen.getByTestId("decrease").click()); // skal fjerne item
+    act(() => screen.getByTestId("decrease").click()); 
 
     expect(screen.getByTestId("items-length")).toHaveTextContent("0");
     expect(screen.getByTestId("count")).toHaveTextContent("0");
@@ -151,7 +151,7 @@ describe("CartContext – Advanced tests", () => {
     );
 
     act(() => screen.getByTestId("add").click());
-    act(() => screen.getByTestId("add").click()); // qty blir 2
+    act(() => screen.getByTestId("add").click()); 
 
     act(() => screen.getByTestId("clear").click());
 

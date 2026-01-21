@@ -21,7 +21,7 @@ export default function CheckoutSuccessPage() {
           viewBox="0 0 48 48"
           role="img"
         >
-          {/* Sirkel */}
+        
           <circle
             cx="24"
             cy="24"
@@ -31,7 +31,6 @@ export default function CheckoutSuccessPage() {
             strokeWidth="4"
           />
 
-          {/* Hake */}
           <path
             d="M14 24l6 6 14-14"
             fill="none"

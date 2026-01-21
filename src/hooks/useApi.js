@@ -15,7 +15,7 @@ export default function useApi(url) {
         const res = await fetch(url);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = await res.json();
-        if (!cancelled) setData(json?.data || json); // Noroff API bruker {data: []}
+        if (!cancelled) setData(json?.data || json); 
       } catch (e) {
         if (!cancelled) setError(true);
       } finally {

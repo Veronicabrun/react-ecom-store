@@ -18,10 +18,9 @@ reportWebVitals();*/
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom"; // 🔹 legg til dette
+import { BrowserRouter } from "react-router-dom"; 
 import App from "./App";
-import "./scss/style.scss"; // 🔹 bruk dine SCSS-stiler i stedet for index.css
-// ⬇️ legg til CartProvider
+import "./scss/style.scss"; 
 import { CartProvider } from "./context/CartContext";
 import "./index.css";
 

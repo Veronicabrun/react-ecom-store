@@ -15,7 +15,7 @@ export default function CartIcon() {
       aria-label="Open cart"
       onClick={() => navigate("/cart")}
     >
-      {/* Moderne shopping bag-ikon */}
+      {/* shopping bag icon */}
       <svg
         className={styles.icon}
         width="22"
@@ -24,7 +24,7 @@ export default function CartIcon() {
         fill="none"
         aria-hidden="true"
       >
-        {/* Posekropp */}
+        {/* Bag body */}
         <path
           d="M5 8.5h14l-1.2 11a2 2 0 0 1-2 1.5H8.2a2 2 0 0 1-2-1.5L5 8.5Z"
           stroke="currentColor"
@@ -33,7 +33,7 @@ export default function CartIcon() {
           strokeLinejoin="round"
           fill="none"
         />
-        {/* Håndtak */}
+        {/* Handle */}
         <path
           d="M8.5 8.5V7.6a3.5 3.5 0 0 1 7 0v0.9"
           stroke="currentColor"
@@ -42,7 +42,7 @@ export default function CartIcon() {
           strokeLinejoin="round"
           fill="none"
         />
-        {/* Små nagler under håndtaket – valgfritt, gir “luksus”-følelse */}
+        {/* Decorative details */}
         <circle cx="9" cy="10.2" r="0.7" fill="currentColor" />
         <circle cx="15" cy="10.2" r="0.7" fill="currentColor" />
       </svg>

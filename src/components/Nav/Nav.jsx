@@ -15,9 +15,7 @@ export default function Nav() {
 
   return (
     <>
-      {/* "Vanlig" nav inne i headeren */}
       <nav className={styles.nav} aria-label="Primary">
-        {/* Desktop-liste */}
         <ul className={styles.listDesktop}>
           <li>
             <NavLink to="/" end className={getLinkClass}>
@@ -31,7 +29,6 @@ export default function Nav() {
           </li>
         </ul>
 
-        {/* Toggle-knapp – vises kun på mobil via CSS */}
         <button
           type="button"
           className={styles.menuToggleButton}
@@ -44,7 +41,6 @@ export default function Nav() {
         </button>
       </nav>
 
-      {/* FULLSKJERMS-meny som dekker hele siden */}
       {isOpen && (
         <div className={styles.mobileMenu} role="dialog" aria-modal="true">
           <div className={styles.mobileMenuInner}>

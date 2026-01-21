@@ -12,7 +12,7 @@ export default function ProductPage() {
   const { addToCart } = useCart();
   const [showToast, setShowToast] = useState(false);
 
-  // 🔹 Bruker custom hook – akkurat som HomePage
+  //  Uses custom hook
   const { data: product, isLoading, isError } = useApi(PRODUCT_ENDPOINT(id));
 
   if (isLoading) {
@@ -37,7 +37,7 @@ export default function ProductPage() {
     reviews = [],
   } = product;
 
-  // 🔹 Sikre tallverdier før toFixed
+  //  Secure numeric values ​​before toFixed
   const safePrice = Number(price) || 0;
   const safeDiscounted = Number(discountedPrice ?? price) || safePrice;
 

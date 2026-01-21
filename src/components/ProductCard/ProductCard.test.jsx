@@ -3,7 +3,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import ProductCard from "./ProductCard";
 
-// 🔹 Si til Jest: "Denne modulen er KUN virtuell, ikke let i node_modules"
+//  Tell Jest: "This module is virtual ONLY, not available in node_modules"
 jest.mock(
   "react-router-dom",
   () => ({
@@ -39,17 +39,17 @@ describe("ProductCard", () => {
   test("renders title and prices", () => {
     const { product } = renderProductCard();
 
-    // Tittel
+    // Title
     expect(
       screen.getByRole("heading", { name: product.title })
     ).toBeInTheDocument();
 
-    // Nåpris (discountedPrice)
+    // Current price
     expect(
       screen.getByText(`${product.discountedPrice.toFixed(2)} kr`)
     ).toBeInTheDocument();
 
-    // Førpris (price)
+    // Preliminary price
     expect(
       screen.getByText(`${product.price.toFixed(2)} kr`)
     ).toBeInTheDocument();
@@ -61,7 +61,7 @@ describe("ProductCard", () => {
       discountedPrice: 100,
     });
 
-    // 50 % rabatt → -50%
+    // 50 % 
     expect(screen.getByText("-50%")).toBeInTheDocument();
   });
 
@@ -71,14 +71,14 @@ describe("ProductCard", () => {
       discountedPrice: 200,
     });
 
-    // Ingen tekst som matcher "-XX%"
+    // No text matching "-XX%"
     expect(screen.queryByText(/-%/)).not.toBeInTheDocument();
   });
 
   test("links to the correct product page", () => {
     const { product } = renderProductCard();
 
-    // Lenkene i kortet:
+    // The links in the card:
     const titleLink = screen.getByRole("link", { name: product.title });
 
     expect(titleLink).toHaveAttribute("href", `/product/${product.id}`);

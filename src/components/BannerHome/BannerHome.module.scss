@@ -1,18 +1,16 @@
 /* src/components/BannerHome/BannerHome.module.scss */
 @use "../../scss/variables" as *;
 
-/* FULL-BLEED BANNER (går fra kant til kant) */
 .section {
   position: relative;
-  /* gjør at bakgrunnen strekker seg fullt ut, selv om main har max-width */
   margin-inline: calc(50% - 50vw);
   padding: 3.5rem 1.5rem 5rem;
   background: $color-surface;   
-  color: $color-text;  // mørk tekst (#223741)
+  color: $color-text;  
   overflow: hidden;
 }
 
-/* Innholdet inni banneret */
+/* The content inside the banner */
 .inner {
   width: min(1200px, 100%);
   margin-inline: auto;
@@ -22,7 +20,7 @@
   gap: 2.5rem;
 }
 
-/* VENSTRE: tekst */
+/* LEFT: text */
 .text {
   max-width: 520px;
 }
@@ -50,7 +48,7 @@
   color: $color-text;
 }
 
-/* knapper */
+/* buttons */
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -71,28 +69,28 @@
   cursor: pointer;
 }
 
-/* mørk knapp på lys bakgrunn */
+/* dark button on light background */
 .primaryBtn {
-  background: $color-text;           // #223741
-  color: $color-primary-text;        // #d2e6e3
+  background: $color-text;           
+  color: $color-primary-text;        
 }
 
 .primaryBtn:hover {
   background: lighten($color-text, 6%);
 }
 
-/* outline-knapp */
+/* outline button */
 .secondaryBtn {
   background: transparent;
   color: $color-text;
-  border: 2px solid $color-text; // eller $color-accent om du vil ha gul kant
+  border: 2px solid $color-text; 
 }
 
 .secondaryBtn:hover {
   background: rgba(34, 55, 65, 0.06);
 }
 
-/* HØYRE: bilde – tar litt mer enn halvparten */
+/* RIGHT: image – takes up a little more than half */
 .media {
   justify-self: end;
   width: min(540px, 100%);
@@ -109,7 +107,7 @@
   }
 }
 
-/* Responsivt – bilde øverst på mobil */
+/* Responsive – image at the top on mobile */
 @media (max-width: 900px) {
   .inner {
     grid-template-columns: 1fr;
@@ -117,7 +115,7 @@
   }
 
   .media {
-    order: -1;              // bilde øverst
+    order: -1;             
     justify-self: center;
     width: 100%;
   }

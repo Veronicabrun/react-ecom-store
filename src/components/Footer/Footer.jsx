@@ -16,7 +16,7 @@ export default function Footer() {
           <span className={styles.brandRight}>Ecom</span>
         </div>
 
-        {/* Kontakt-seksjon */}
+        {/* Contact section */}
         <div className={styles.contact}>
           <Link to="/contact" className={styles.contactLink}>
             Contact us
@@ -24,7 +24,7 @@ export default function Footer() {
 
           <div className={styles.contactDetails}>
             <div className={styles.contactItem}>
-              {/* Enkel “mail”-ikon */}
+              {/* mail icon */}
               <span className={styles.contactIcon} aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <rect x="3" y="5" width="18" height="14" rx="2" ry="2" />
@@ -40,7 +40,7 @@ export default function Footer() {
             </div>
 
             <div className={styles.contactItem}>
-              {/* Enkel telefon-ikon */}
+              {/* phone icon */}
               <span className={styles.contactIcon} aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <path d="M8.5 3.5 6 5.5c0 6.2 4.8 11 11 11l2-2.6-2-4.1-3.3.9a8.4 8.4 0 0 1-3.1-3.1l.9-3.3-4-1.8Z" />
@@ -53,7 +53,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Sosiale medier (placeholder-knapper foreløpig) */}
         <div className={styles.social}>
           <span className={styles.socialLabel}>Follow us</span>
           <div className={styles.socialIcons}>

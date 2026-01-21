@@ -3,19 +3,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./BannerHome.module.scss";
 
-// 🔹 Lokalt banner-bilde
-import heroImg from "../../images/bannerHome.jpg"; // endre til .jpeg/.png hvis det er det du har
+//  Local banner image
+import heroImg from "../../images/bannerHome.jpg";
 
 export default function BannerHome() {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        {/* HØYRE: stort bilde (tar litt mer enn halvparten) */}
+        {/* RIGHT: large image (takes up a little more than half) */}
         <div className={styles.media} aria-hidden="true">
           <img src={heroImg} alt="Selection of lifestyle products" />
         </div>
 
-        {/* VENSTRE: tekst + knapper */}
+        {/* LEFT: text + buttons */}
         <div className={styles.text}>
           <p className={styles.eyebrow}>Fresh picks</p>
 
