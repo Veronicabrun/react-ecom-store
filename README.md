@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+# React eCom Store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img width="1912" height="948" alt="2025-12-26_01h08_46" src="https://github.com/user-attachments/assets/85ac102e-0790-465d-8b04-f2e850912ab3" />
 
-## Available Scripts
 
-In the project directory, you can run:
+A responsive eCommerce store built with React where users can browse products, search items, add products to cart and complete a checkout flow.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Description
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project was created as part of the JavaScript Frameworks Course Assignment at Noroff Frontend Development. :contentReference[oaicite:0]{index=0}
 
-### `npm test`
+The goal of the project was to apply React knowledge by building a fully functional eCommerce application using React Router, reusable components and API integration.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The application includes:
 
-### `npm run build`
+- Homepage with all products
+- Product detail page
+- Cart functionality
+- Checkout success page
+- Contact form with validation
+- Dynamic routing with React Router
+- Search functionality with look-ahead filtering
+- Responsive design for desktop and mobile devices
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Browse products from the Noroff API
+- Search products by title
+- View individual product details
+- Add products to cart
+- View cart total
+- Complete checkout flow
+- Responsive navigation and layout
+- Form validation using React Hook Form and Yup
+- Dynamic routes using React Router
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Built With
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React.js
+- React Router DOM
+- React Hook Form
+- Yup
+- JavaScript
+- Sass
+- Netlify
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+### Installing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Clone the repo:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone https://github.com/Veronicabrun/react-ecom-store.git
+```
 
-### Code Splitting
+Install the dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm install
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Running
 
-### Making a Progressive Web App
+To run the app locally:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm start
+```
 
-### Advanced Configuration
+To create a production build:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm run build
+```
 
-### Deployment
+To run tests:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm test
+```
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## API
+
+The project uses the Noroff Online Shop API:
+
+https://v2.api.noroff.dev/online-shop
+
+---
+
+## Live Site
+
+Live Website:
+
+https://veronicabp-react-store.netlify.app/
+
+---
+
+## Contributing
+
+This project was created as part of a frontend development course at Noroff and is currently not open for contributions.
+
+If you would like to suggest improvements, feel free to fork the repository and create a pull request.
+
+---
+
+## Contact
+
+- GitHub:
+  https://github.com/Veronicabrun
+
+- LinkedIn:
+  https://www.linkedin.com/in/veronica-brun-pedersen-2860bb249/
+
+- Email:
+  vbpedersen@outlook.com
+
+---
+
+## Acknowledgments
+
+- Noroff Frontend Development
+- React documentation
+- React Router documentation
+- React Hook Form documentation
+- Yup documentation
+- Netlify documentation
