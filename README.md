@@ -9,7 +9,7 @@ A responsive eCommerce store built with React where users can browse products, s
 
 ## Description
 
-This project was created as part of the JavaScript Frameworks Course Assignment at Noroff Frontend Development. :contentReference[oaicite:0]{index=0}
+This project was created as part of the JavaScript Frameworks Course Assignment at Noroff Frontend Development.
 
 The goal of the project was to apply React knowledge by building a fully functional eCommerce application using React Router, reusable components and API integration.
 
