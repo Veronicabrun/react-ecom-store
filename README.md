@@ -1,4 +1,4 @@
-# React eCom Store
+# Nordic eCommerce Store
 
 <img width="1912" height="948" alt="2025-12-26_01h08_46" src="https://github.com/user-attachments/assets/85ac102e-0790-465d-8b04-f2e850912ab3" />
 
