@@ -94,9 +94,8 @@ npm test
 
 ## API
 
-The project uses the Noroff Online Shop API:
+The project uses the Noroff Online Shop API
 
-https://v2.api.noroff.dev/online-shop
 
 ---
 
